@@ -1,0 +1,296 @@
+
+<head>
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dropdown Menu with Search Box | Bus Registration</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+  
+  
+
+  
+
+
+
+
+
+<link rel="stylesheet" href="https://techlabz.in/truebus-web/admin/assets/css/bootstrap.min.css">
+
+
+<link rel="stylesheet" href="https://techlabz.in/truebus-web/admin/assets/css/AdminLTE.min.css">
+
+
+
+
+
+
+</head>
+
+
+
+
+<body >
+<!-- <div class="wrapper"> -->
+
+
+
+    <div class="wrapper1">
+        <nav>
+          <input type="checkbox" id="show-search">
+          <input type="checkbox" id="show-menu">
+          <label for="show-menu" class="menu-icon"><i class="fas fa-bars"></i></label>
+          <div class="content1">
+            <div class="logo"><a href="#">Bus Registration</a>
+            </div>
+          </div>
+            <div style="text-align: right;" class = "content1">
+              <ul class="links" >
+                <li><a href="#">Bus Hire</a></li>
+                <li><a href="#">About</a></li>
+                <li>
+                  <a href="#" class="desktop-link">Manage Bookings</a>
+                  <input type="checkbox" id="show-features">
+                  <label for="show-features">Manage Bookings</label>
+                  <ul>
+                    <li><a href="#">Cancel</a></li>
+                    <li><a href="#">Change Password</a></li>
+                    <li><a href="#">Profile</a></li>
+                  </ul>
+                <li><a href="#">Feedback</a></li>
+      
+                <li>
+                  <a href="#" class="desktop-link1">Login/Signup</a>
+                  <input type="checkbox" id="show-features1">
+                  <label for="show-features1">Login/Signup</label>
+                  <ul>
+                    <li><a  routerLink="/registration">SignUp</a></li>
+                    <li><a  routerLink="/login">Login</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+        </nav>
+      </div>
+
+
+<div >
+
+
+
+<section class="content" style = "margin-top: 200px;">
+<div class="row">
+<div class="col-xs-12">
+</div>
+<div class="col-xs-12">
+
+<div class="box">
+<div class="box-header">
+<h3 class="box-title">View Bus Management Details</h3>
+</div>
+
+<div class="box-body">
+<table id="" class="table table-bordered table-striped datatable">
+<thead>
+<tr>
+<th class="hidden">ID</th>
+<th>Bus Name</th>
+<th>Bus RegiNumber</th>
+<th>Bus Type</th>
+<th>Maximum Seats</th>
+<th>Start Point</th>
+<th>Start Time</th>
+<th>End Point</th>
+<th>End Time</th>
+
+</tr>
+</thead>
+    <tbody>
+        <tr>
+        <td class="hidden">1</td>
+        <td class="center">KMN</td>
+        <td class="center">12212</td>
+        <td class="center">AC</td>
+        <td class="center">40</td>
+        <td class="center">kochi</td>
+        <td class="center">10:15 AM</td>
+        <td class="center">munnar</td>
+        <td class="center">10:15 AM</td>
+        <td class="center">
+        <a class="btn btn-sm bg-olive show-busgetdetails" href="javascript:void(0);" data-id="1">
+        <i class="fa fa-fw fa-eye"></i> View </a>
+        <!-- <a class="btn btn-sm btn-primary" href="https://techlabz.in/truebus-web/admin/Bus_details/edit_bus/1">
+        <i class="fa fa-fw fa-edit"></i>Edit</a>
+        <a class="btn btn-sm btn-danger" href="https://techlabz.in/truebus-web/admin/Bus_details/delete_bus/1" onClick="return doconfirm()">
+        <i class="fa fa-fw fa-trash"></i>Delete</a> -->
+        </td>
+        </tr>
+    
+    
+    
+    </tbody>
+<tfoot>
+
+</tfoot>
+ </table>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+</div>
+<div class="modal fade modal-wide" id="popup-busModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+<h4 class="modal-title">View Bus Management Details</h4>
+</div>
+<div class="modal-busbody">
+</div>
+<div class="business_info">
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+</div>
+</div>
+
+</div>
+
+</div>
+<!-- <footer class="main-footer">
+<div class="pull-right hidden-xs">
+<b>Version</b> 1.0
+</div>
+<strong>Copyright &copy; 2015-2016 <a href="#">Techware Solution</a>.</strong> All rights reserved.
+</footer> -->
+<!-- </div> -->
+<script>
+	
+	base_url = "http://techlabz.in/truebus-web/admin/";
+	config_url = "http://techlabz.in/truebus-web/admin/";
+	</script>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.8/angular.min.js"></script>
+<script src="https://techlabz.in/truebus-web/admin/assets/js/jQuery-2.1.4.min.js"></script>
+
+<script src="https://techlabz.in/truebus-web/admin/assets/js/sortables.js"></script>
+<script src="https://techlabz.in/truebus-web/admin/assets/js/app.js"></script>
+<script src="https://techlabz.in/truebus-web/admin/assets/js/app-test.js"></script>
+
+<script src="https://techlabz.in/truebus-web/admin/assets/js/bootstrap.min.js"></script>
+<script src="https://techlabz.in/truebus-web/admin/assets/js/pace.js"></script>
+
+<script src="https://techlabz.in/truebus-web/admin/assets/js/select2.min.js"></script>
+
+<script src="https://techlabz.in/truebus-web/admin/assets/js/jquery.dataTables.min.js"></script>
+<script src="https://techlabz.in/truebus-web/admin/assets/js/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
+
+<script src="https://techlabz.in/truebus-web/admin//assets/js/jquery.colorbox-min.js"></script>
+
+<script src="https://techlabz.in/truebus-web/admin//assets/js/charisma.js"></script>
+<script src="https://techlabz.in/truebus-web/admin//assets/js/chosen.jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.8/angular.min.js"></script>
+
+
+<script src="https://techlabz.in/truebus-web/admin/assets/js/app.min.js"></script>
+<script src="https://techlabz.in/truebus-web/admin/assets/js/custom-script.js"></script>
+<script src="https://techlabz.in/truebus-web/admin/assets/js/immanucustom-script.js"></script>
+<script src="https://techlabz.in/truebus-web/admin/assets/js/jquery.raty.min.js"></script>
+
+<script src="https://techlabz.in/truebus-web/admin/assets/js/bootstrap-timepicker.min.js"></script>
+
+<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+<script src="https://techlabz.in/truebus-web/admin/assets/js/parsley.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script>
+	 $(function () {
+	   $(".timepicker").timepicker({
+          showInputs: false
+        });
+      });
+    </script>
+<script>
+   $(function () {
+    $( "#datepicker").datepicker({ dateFormat: 'yy-mm-dd' });
+     $(".timepicker").timepicker({
+          showInputs: false
+        });
+      });
+    </script>
+
+
+<script>
+	 $(function () {
+	   $("#timepicker_cancellation").timepicker({
+          showInputs: false,
+		  //defaultTime: false,
+		  showMeridian: false,
+
+		  
+		  
+		  
+		  
+		  
+        });
+ });
+    </script>
+
+
+<script>
+      $(function () {
+        //Initialize Select2 Elements
+        $(".select2").select2();
+		
+		$('.datatable').DataTable({
+			"ordering" : $(this).data("ordering"),
+			"order": [[ 0, "desc" ]]
+        });
+		
+	  });
+	</script>
+<script>
+function doconfirm()
+{
+    job=confirm("Are you sure to delete permanently?");
+     if(job!=true)
+    {
+        return false;
+    }
+}
+</script>
+<script>
+ 
+//Multi Select Box 				   
+$(document).ready(function() {			
+				 
+$(".js-example-basic-multiple").select2();   
+				   
+});
+</script>
+<script type="text/javascript">
+    /*tinymce.init({
+         selector: "textarea",
+   
+  height: 230,
+  plugins: 'link image code',
+  relative_urls: false,
+  content_css: [
+    '//fast.fonts.net/cssapi/e6dc9b99-64fe-4292-ad98-6974f93cd2a2.css',
+    '//www.tinymce.com/css/codepen.min.css'
+  ]
+
+    });*/
+</script>
+</body>
+
