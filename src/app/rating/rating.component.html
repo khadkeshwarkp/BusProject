@@ -1,0 +1,107 @@
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    
+    <link rel="stylesheet" href="https://techlabz.in/truebus-web/admin/assets/css/bootstrap.min.css">
+    <link href="https://techlabz.in/truebus-web/admin//assets/css/charisma-app.css" rel="stylesheet">
+    <link href="https://techlabz.in/truebus-web/admin//assets/css/colorbox.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"> 
+    
+    
+    <link rel="stylesheet" href="https://techlabz.in/truebus-web/admin/assets/css/select2.min.css">
+    
+    
+    
+     <link rel="stylesheet" href="https://techlabz.in/truebus-web/admin/assets/css/AdminLTE.min.css"> 
+    
+    
+     <link rel="stylesheet" href="https://techlabz.in/truebus-web/admin/assets/css/skin-red.css"> 
+    
+    
+    
+    
+    
+    </head>
+    <body class="hold-transition skin-red sidebar-mini"></body>
+    <div class="wrapper"></div>
+    <header class="main-header"></header>
+    
+    
+    
+    <aside class="main-sidebar">
+    
+    <section class="sidebar">
+    <div class="user-panel">
+      <div class="pull-left image">
+        <img src="https://techlabz.in/truebusupdate/admin/assets/uploads/profile_pic/admin/1511772739_man.png" class="user-image left-sid">
+        </div>
+        <div class="pull-left info">
+        <p>Admin</p>
+        
+        <div class="pull-left">
+          <a  routerLink="/profile" class="btn btn-default btn-warning">Profile</a>
+          </div>
+          <div class="pull-right">
+            <a routerLink="/admin" class="btn btn-default btn-danger">Sign out</a>
+            </div>
+        </div>
+        </div>
+    
+    <ul class="sidebar-menu">
+    
+        <li>
+            <a class="viewbus" routerLink="/viewbus" ><i class="fa fa-bus" aria-hidden="true"></i><span>Bus Management</span></a>
+        </li>
+        <li>
+            <a class="viewroute" routerLink="/viewroutes" ><i class="fa fa-arrows-v" aria-hidden="true"></i><span>Route Details</span></a>
+        </li>
+        <li>
+            <a class="user" routerLink="/userdetails" ><i class="fa fa-users" aria-hidden="true"></i><span>Users</span></a>
+        </li>
+        
+        <li>
+            <a class="booking" routerLink="/bookingdetails" ><i class="fa fa-book" aria-hidden="true"></i><span>Booking Details</span></a>
+        </li>
+        
+        <li>
+            <a class="rating" routerLink="/rating" ><i class="fa fa-star" aria-hidden="true"></i><span>Rating</span></a>
+        </li>
+    </ul>
+    </section>
+    
+    </aside>
+    <div class="content-wrapper">
+    
+    <section class="content-header">
+      <div>
+        <h1>Feeback</h1>
+     
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Booking Id</th>
+                    <th>Feedback</th>                         
+                   <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let product of feedback">
+                    <td>{{product.bookingId}}</td>
+                    <td>{{product.feedback}}</td>
+                   
+                    
+                    <td>
+                       <!-- <button [routerLink]="['/update/', product.userId]">Update</button> -->
+                        <!-- <button type="button" (click)="delete(product.bookingId)">Remove</button>  -->
+                    </td>
+                     
+                   
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
