@@ -18,12 +18,12 @@ export class CreateComponent implements OnInit {
   constructor(
     public fb: FormBuilder,
     private router: Router,
-    public service: ApiCallService
+    public service: ApiCallService,
+    
   ){ }
   ngOnInit() {
       this.busForm = this.fb.group({   
       busId:[],
-      busNumber:[],
       busPlateNumber:[],
       busType:[],
       capacity:[],

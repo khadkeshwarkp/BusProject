@@ -10,7 +10,6 @@ import { AddroutesComponent } from './addroutes/addroutes.component';
 import { RatingComponent } from './rating/rating.component';
 import { UserdetailsComponent } from './userdetails/userdetails.component';
 import { ProfileComponent } from './profile/profile.component';
-import { PaymentComponent } from './payment/payment.component';
 import { AdminloginComponent } from './adminlogin/adminlogin.component';
 import { HttpClient,HttpClientModule } from '@angular/common/http';
 import { UpdateComponent } from './update/update.component';
@@ -32,15 +31,11 @@ import { BookingsComponent } from './bookings/bookings.component';
     RatingComponent,
     UserdetailsComponent,
     ProfileComponent,
-    PaymentComponent,
     AdminloginComponent,
     UpdateComponent,
     CreateComponent,
     UpdaterouteComponent,
-    BookingsComponent
-  
-
-     
+    BookingsComponent 
     
     
     

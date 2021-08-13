@@ -29,8 +29,8 @@ export class ApiCallService {
     return this.httpClient.get<Bus>(this.ApiUrl + '/Bus/' + id)
    
   }
-
-  update(id:any, product:any): Observable<Bus> {
+  
+ update(id:any, product:any): Observable<Bus> {
     return this.httpClient.put<Bus>(this.ApiUrl + '/Bus/' + id,  JSON.stringify(product), this.httpOptions)
     
   }

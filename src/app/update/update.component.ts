@@ -20,6 +20,7 @@ export class UpdateComponent implements OnInit {
     busPlateNumber:new FormControl(''),
     busType:new FormControl(''),
     capacity:new FormControl(''),
+    currentCount:new FormControl(''),
     routeId:new FormControl(''),
 
    
@@ -41,6 +42,7 @@ export class UpdateComponent implements OnInit {
       busPlateNumber:new FormControl(data["busPlateNumber"]),
       busType:new FormControl(data["busType"]),
       capacity:new FormControl(data["capacity"]),
+      currentCount:new FormControl(data["currentCount"]),
       routeId: new FormControl(data['routeId'])
     })
   )

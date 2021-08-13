@@ -16,23 +16,22 @@ export class BookingApiService {
   constructor(private httpClient: HttpClient){}
 
   getAll(): Observable<Booking[]> {
-    return this.httpClient.get<Booking[]>(this.ApiUrl + '/bookings/')
+    return this.httpClient.get<Booking[]>(this.ApiUrl + '/booking/')
     
   }
   create(product: any): Observable<Booking> {
-    return this.httpClient.post<Booking>(this.ApiUrl + '/bookings/', JSON.stringify(product), this.httpOptions)    
+    return this.httpClient.post<Booking>(this.ApiUrl + '/booking/', JSON.stringify(product), this.httpOptions)    
   } 
   getById(id: any): Observable<Booking> {
-    return this.httpClient.get<Booking>(this.ApiUrl + '/bookings/' + id)
+    return this.httpClient.get<Booking>(this.ApiUrl + '/booking/' + id)
    
   }
-
-  update(id:any, product:any): Observable<Booking> {
-    return this.httpClient.put<Booking>(this.ApiUrl + '/bookings/' + id, JSON.stringify(product), this.httpOptions)
+    update(id:any, product:any): Observable<Booking> {
+    return this.httpClient.put<Booking>(this.ApiUrl + '/booking/' + id, JSON.stringify(product), this.httpOptions)
     
   }
   delete(id:any){
-    return this.httpClient.delete<Booking>(this.ApiUrl + '/bookings/' + id, this.httpOptions)
+    return this.httpClient.delete<Booking>(this.ApiUrl + '/booking/' + id, this.httpOptions)
     
     
   }

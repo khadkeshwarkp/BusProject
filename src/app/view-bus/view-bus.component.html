@@ -59,10 +59,7 @@
     <li>
         <a class="user" routerLink="/userdetails" ><i class="fa fa-users" aria-hidden="true"></i><span>Users</span></a>
     </li>
-    
-    <li>
-        <a class="user" routerLink="/schedule" ><i class="fa fa-bus" aria-hidden="true"></i><span>Bus Schedule</span></a>
-    </li>
+
     <li>
         <a class="booking" routerLink="/bookingdetails" ><i class="fa fa-book" aria-hidden="true"></i><span>Booking Details</span></a>
     </li>
@@ -78,7 +75,7 @@
 
 <section class="content-header">
     <h1>
-        View Bus Management Details
+        Bus  Details
         </h1>
          <button class="addbus"><a class="addbus" routerLink="/create">
             Add Bus
@@ -102,23 +99,25 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th>#</th>
+                      
                         <th>Bus Id</th>
                         <th>Bus Number Plate</th>
                         <th>Type</th>
                         <th>Capacity</th> 
-                        <th>Route Id</th>                           
+                        <th>No of Occupied Seats</th>
+                        
+                                                 
                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let product of bus">
                         <td>{{product.busId}}</td>
-                        <td>{{product.busNumber}}</td>
                         <td>{{product.busPlateNumber}}</td>
                         <td>{{product.busType}}</td>
                         <td>{{product.capacity}}</td>
-                        <td>{{product.routeId}}</td>
+                        <td>{{product.currentCount}}</td>
+                        
                         
                         <td>
                            <button [routerLink]="['/update/', product.busId]">Update</button>
@@ -131,102 +130,7 @@
                 </tbody>
             </table>
            
-        <!-- <table id="" class="table table-bordered table-striped datatable">
-        <thead>
-        <tr>
-        <th class="hidden">ID</th>
-        <th>Bus Name</th>
-        <th>Bus ID</th>
-        <th>Bus Type</th>
-        
-        <th>Start Point</th>
-        <th>Start Time</th>
-        <th>End Point</th>
-        <th>End Time</th>
-        <th width="400px;">Action</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-        <td class="hidden">1</td>
-        <td class="center">KMN</td>
-        <td class="center">12212</td>
-        <td class="center">AC</td>
-        
-        <td class="center">kochi</td>
-        <td class="center">10:15 AM</td>
-        <td class="center">munnar</td>
-        <td class="center">10:15 AM</td>
-        <td class="center">
-        <a class="btn btn-sm bg-olive show-busgetdetails" href="javascript:void(0);" data-id="1">
-            
-        <i class="fa fa-fw fa-eye"></i> View </a>
-        <a class="btn btn-sm btn-primary" href="#">
-        <i class="fa fa-fw fa-edit"></i>Edit</a>
-        <a class="btn btn-sm btn-danger" href="#" onClick="return doconfirm()">
-        <i class="fa fa-fw fa-trash"></i>Delete</a>
-        </td>
-        </tr>
-        <tr>
-        <td class="hidden">2</td>
-        <td class="center">MNT</td>
-        <td class="center">4545</td>
-        <td class="center">Non AC</td>
-        <td class="center">munnar</td>
-        <td class="center">10:15 AM</td>
-        <td class="center">kochi</td>
-        <td class="center">10:15 AM</td>
-        <td class="center">
-        <a class="btn btn-sm bg-olive show-busgetdetails" href="javascript:void(0);" data-id="2">
-        <i class="fa fa-fw fa-eye"></i> View </a>
-        <a class="btn btn-sm btn-primary" href="#">
-        <i class="fa fa-fw fa-edit"></i>Edit</a>
-        <a class="btn btn-sm btn-danger" href="#" onClick="return doconfirm()">
-        <i class="fa fa-fw fa-trash"></i>Delete</a>
-        </td>
-        </tr>
-        <tr>
-        <td class="hidden">3</td>
-        <td class="center">Volvo</td>
-        <td class="center">1234</td>
-        <td class="center">AC</td>
-        <td class="center">Bangalore</td>
-        <td class="center">03:00 PM</td>
-        <td class="center">Kochi</td>
-        <td class="center">06:00 AM</td>
-        <td class="center">
-         <a class="btn btn-sm bg-olive show-busgetdetails" href="javascript:void(0);" data-id="3">
-        <i class="fa fa-fw fa-eye"></i> View </a>
-        <a class="btn btn-sm btn-primary" href="#">
-        <i class="fa fa-fw fa-edit"></i>Edit</a>
-        <a class="btn btn-sm btn-danger" href="#" onClick="return doconfirm()">
-        <i class="fa fa-fw fa-trash"></i>Delete</a>
-        </td>
-        </tr>
-        <tr>
-        <td class="hidden">4</td>
-        <td class="center">Volvo XL</td>
-        <td class="center">2563</td>
-        <td class="center">AC</td>
-        <td class="center">Banglore</td>
-        <td class="center">02:30 PM</td>
-        <td class="center">Chennai</td>
-        <td class="center">07:30 PM</td>
-        <td class="center">
-
-        <a class="btn btn-sm bg-olive show-busgetdetails" href="javascript:void(0);" data-id="4">
-       <i class="fa fa-fw fa-eye"></i> View </a>
-        <a class="btn btn-sm btn-primary" href="#"> 
-        <i class="fa fa-fw fa-edit"></i>Edit</a>
-        <a class="btn btn-sm btn-danger" href="#" onClick="return doconfirm()">
-        <i class="fa fa-fw fa-trash"></i>Delete</a>
-        </td>
-        </tr>
-        </tbody>
-        <tfoot>
-        
-        </tfoot>
-         </table> -->
+       
         </div>
         
         </div>
