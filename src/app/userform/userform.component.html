@@ -1,0 +1,86 @@
+<div class="wrapper1"style = "background-color:#DC3545;
+position:fixed;
+top:0;
+width:100%;
+z-index:100;">
+    <nav>
+      <input type="checkbox" id="show-search">
+      <input type="checkbox" id="show-menu">
+      <label for="show-menu" class="menu-icon"><i class="fas fa-bars"></i></label>
+      <div class="content1">
+        <div class="logo"><a href="#">Bus Registration</a>
+        </div>
+      </div>
+        <div style="text-align: right;" class = "content1">
+          <ul class="links" >
+            <li><a href="#">Bus Hire</a></li>
+            <li><a href="#">About</a></li>
+            <li>
+              <a href="#" class="desktop-link">Manage Bookings</a>
+              <input type="checkbox" id="show-features">
+              <label for="show-features">Manage Bookings</label>
+              <ul>
+                <li><a href="#">Cancel</a></li>
+                <li><a href="#">Change Password</a></li>
+                <li><a href="#">Profile</a></li>
+              </ul>
+            <li><a href="#">Feedback</a></li>
+  
+            <li>
+              <a href="#" class="desktop-link1">Login/Signup</a>
+              <input type="checkbox" id="show-features1">
+              <label for="show-features1">Login/Signup</label>
+              <ul>
+                <li><a  routerLink="/registration">SignUp</a></li>
+                <li><a  routerLink="/login">Login</a></li>
+                <li><a class = "admin" routerLink="/admin">Admin Login</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+    </nav>
+  </div>
+
+<div class="container mt-4 " >
+    <div class="row justify-content-center"style ="margin-top: 130px;">
+      <div class="col-md-10">
+        <div class="row">
+          <div class="col-md-8 block" style="
+    height: 340px;
+    margin-bottom: 28px;
+  ">
+            <form (ngSubmit)="userForm(userF)" #userF="ngForm">
+              <div class="form-group">
+                <label>User Name</label>
+                <input type="text" required name="user_name" ngModel class="form-control form-control-sm">
+              </div>
+              <div class="form-group">
+                <label>User Mobile No</label>
+                <input type="text" required name="user_mobile" ngModel class="form-control form-control-sm">
+              </div>
+              <div class="form-group">
+                <label>Email </label>
+                <input type="email" required name="user_email" ngModel class="form-control form-control-sm">
+              </div>
+              <button [disabled]="!userF.valid" class="btn btn-sm btn-primary">Submit</button>
+            </form>
+          </div>
+          <div class="col-md-4">
+            <div *ngIf="bookings" class="card card-body block j_details">
+              <h6>Ticket Details</h6>
+              <hr>
+              <h5 class="text-capitalize"style="color:coral"> {{schedules.bus.route.startingPoint}} to {{schedules.bus.route.destination}} </h5>
+              <p> Date & Time : {{schedules.from_date}} :{{schedules.time}}</p>
+              <p>Bus Number: {{schedules.bus.busId}} <br>
+                  <span>Bus Type : {{schedules.bus.busType}}  </span>
+              </p>
+              <p >Seats No (
+                <li style="display:inline;color:coral" *ngFor="let s of seats">{{s.seatId}} , </li>
+                
+                )</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

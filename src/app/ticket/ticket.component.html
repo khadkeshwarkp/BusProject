@@ -1,0 +1,53 @@
+
+<div class="wrapper1"style = "background-color:#DC3545;
+position:fixed;
+top:0;
+width:100%;
+z-index:100;">
+    <nav>
+      <input type="checkbox" id="show-search">
+      <input type="checkbox" id="show-menu">
+      <label for="show-menu" class="menu-icon"><i class="fas fa-bars"></i></label>
+      <div class="content1">
+        <div class="logo"><a href="#">Bus Registration</a>
+        </div>
+      </div>
+        <div style="text-align: right;" class = "content1">
+          <ul class="links" >
+            <li><a href="#">Bus Hire</a></li>
+            <li><a href="#">About</a></li>
+            <li>
+              <a href="#" class="desktop-link">Manage Bookings</a>
+              <input type="checkbox" id="show-features">
+              <label for="show-features">Manage Bookings</label>
+              <ul>
+                <li><a href="#">Cancel</a></li>
+                <li><a href="#">Change Password</a></li>
+                <li><a href="#">Profile</a></li>
+              </ul>
+            <li><a href="#">Feedback</a></li>
+  
+            <li>
+              <a href="#" class="desktop-link1">Login/Signup</a>
+              <input type="checkbox" id="show-features1">
+              <label for="show-features1">Login/Signup</label>
+              <ul>
+                <li><a  routerLink="/registration">SignUp</a></li>
+                <li><a  routerLink="/login">Login</a></li>
+                <li><a class = "admin" routerLink="/admin">Admin Login</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+    </nav>
+    
+  </div>
+  <div style="margin-top:100px ; text-align: center;">
+    <h1>Thanks! You ticket has been successfully created.</h1>
+    <h1>Name: {{bookings!.customerName}}</h1>
+    <h1>Contact No: {{bookings!.customerContact}}</h1>
+    <h1>Email: {{bookings!.customerEmail}}</h1>
+    <h1>Total Fare: {{bookings!.totalAmount}}</h1>
+    <h1>Total Seats: {{bookings!.numberOfSeats}}</h1>
+  </div>
+

@@ -7,23 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Dropdown Menu with Search Box | Bus Registration</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-  
-  
-
-  
-
-
-
 
 
 <link rel="stylesheet" href="https://techlabz.in/truebus-web/admin/assets/css/bootstrap.min.css">
 
 
 <link rel="stylesheet" href="https://techlabz.in/truebus-web/admin/assets/css/AdminLTE.min.css">
-
-
-
-
 
 
 </head>
@@ -36,7 +25,11 @@
 
 
 
-    <div class="wrapper1">
+    <div class="wrapper1"style = "background-color:#DC3545;
+    position:fixed;
+    top:0;
+    width:100%;
+    z-index:100;">
         <nav>
           <input type="checkbox" id="show-search">
           <input type="checkbox" id="show-menu">
@@ -67,6 +60,7 @@
                   <ul>
                     <li><a  routerLink="/registration">SignUp</a></li>
                     <li><a  routerLink="/login">Login</a></li>
+                    <li><a class = "admin" routerLink="/admin">Admin Login</a></li>
                   </ul>
                 </li>
               </ul>
@@ -87,7 +81,7 @@
 
 <div class="box">
 <div class="box-header">
-<h3 class="box-title">View Bus Management Details</h3>
+<h3 class="box-title">Bus Details</h3>
 </div>
 
 <div class="box-body">
@@ -95,36 +89,42 @@
 <thead>
 <tr>
 <th class="hidden">ID</th>
-<th>Bus Name</th>
-<th>Bus RegiNumber</th>
+<th>Bus No.</th>
 <th>Bus Type</th>
 <th>Maximum Seats</th>
 <th>Start Point</th>
 <th>Start Time</th>
 <th>End Point</th>
 <th>End Time</th>
-
+<th>Fare per Seat</th>
 </tr>
 </thead>
     <tbody>
-        <tr>
-        <td class="hidden">1</td>
-        <td class="center">KMN</td>
-        <td class="center">12212</td>
-        <td class="center">AC</td>
-        <td class="center">40</td>
-        <td class="center">kochi</td>
-        <td class="center">10:15 AM</td>
-        <td class="center">munnar</td>
-        <td class="center">10:15 AM</td>
-        <td class="center">
-        <a class="btn btn-sm bg-olive show-busgetdetails" href="javascript:void(0);" data-id="1">
-        <i class="fa fa-fw fa-eye"></i> View </a>
+        <tr *ngFor = "let i of data">
+        <td class="center">{{i.busId}}</td>
+        <td class="center">{{i.bus.busType}}</td>
+        <td class="center">{{i.bus.capacity}}</td>
+        <td class="center">{{i.bus.route.startingPoint}}</td>
+        <td class="center">{{i.time}}</td>
+        <td class="center">{{i.bus.route.destination}}</td>
+        <td class="center">{{i.estimatedArrivalTime}}</td>
+        <td class="center">{{i.fareAmount}}</td>
+          <ng-template #template>
+            <div class="modal-body" style ="margin-top: 500px;">
+                <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+              <app-seatchart (closeModal)="closeModal()"></app-seatchart>
+            </div>
+        </ng-template>
+
+        <td class="center"><button  (click)="openModal(template,i)" class="btn btn-sm bg-olive show-busgetdetails">View Seats</button></td>
+        
         <!-- <a class="btn btn-sm btn-primary" href="https://techlabz.in/truebus-web/admin/Bus_details/edit_bus/1">
         <i class="fa fa-fw fa-edit"></i>Edit</a>
         <a class="btn btn-sm btn-danger" href="https://techlabz.in/truebus-web/admin/Bus_details/delete_bus/1" onClick="return doconfirm()">
         <i class="fa fa-fw fa-trash"></i>Delete</a> -->
-        </td>
+     
         </tr>
     
     

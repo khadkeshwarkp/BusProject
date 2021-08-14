@@ -1,4 +1,4 @@
-
+<!-- 
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -68,7 +68,7 @@
     </nav>
   </div>
     <div class="s002">
-      <form [formGroup]="ScheduleForm" (ngSubmit)="submitDetails()" novalidate>
+      <form [formGroup]="ScheduleForm" novalidate>
         <fieldset>
           <legend>SEARCH BUS</legend>
         </fieldset>
@@ -98,9 +98,229 @@
             <input  formControlName="viewdate" class="form-control" id="return" type="date" placeholder="1 Aug 2021" />
           </div>
           <div class="input-field fifth-wrap">
-            <button class="btn-search" type="submit">SEARCH</button>
+            <button class="btn-search" type="button" (click) = "submitDetails()" >SEARCH</button>
           </div>
         </div>
       </form>
     </div>
-    </body>
+    </body> -->
+
+<head>
+	<meta charset="UTF-8">
+  <script src="../../assets/js/app.js"></script>
+	<!-- Responsive Meta Tag -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Adding Bootstrap CDN - Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<!-- Adding Font Awesome -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+	<!-- Adding CSS -->
+	<title>redBus</title>
+</head>
+  <div class="wrapper" style = "background-color:#DC3545;
+  position:fixed;
+  top:0;
+  width:100%;
+  z-index:100;">
+	<nav class="navbar navbar-expand-sm bg-danger navbar-dark fixed-top">
+		<input type="checkbox" id="show-search">
+      <input type="checkbox" id="show-menu">
+      <label for="show-menu" class="menu-icon"><i class="fas fa-bars"></i></label>
+      <div class="content">
+        <div class="logo"><a href="#">Bus Registration</a>
+        </div>
+      </div>
+        <div style="text-align: right;" class = "content">
+          <ul class="links" >
+            <li><a href="#">Bus Hire</a></li>
+            <li><a href="#">About</a></li>
+            <li>
+              <a href="#" class="desktop-link">Manage Bookings</a>
+              <input type="checkbox" id="show-features">
+              <label for="show-features">Manage Bookings</label>
+              <ul>
+                <li><a href="#">Cancel</a></li>
+                <li><a href="#">Change Password</a></li>
+                <li><a href="#">Profile</a></li>
+              </ul>
+            <li><a href="#">Feedback</a></li>
+  
+            <li>
+              <a href="#" class="desktop-link">Login/Signup</a>
+              <input type="checkbox" id="show-features">
+              <label for="show-features">Login/Signup</label>
+              <ul>
+                <li><a class = "registration" routerLink="/registration">SignUp</a></li>
+                <li><a class = "login" routerLink="/login">Login</a></li>
+				<li><a class = "admin" routerLink="/admin">Admin Login</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+	</nav>
+</div>
+	<!-- Main Home Banner and Input Search Container -->
+	<div class="s002" style="background-color: rgb(235, 120, 99);">
+		<form [formGroup]="ScheduleForm">
+		  <fieldset>
+			<legend>SEARCH BUS</legend>
+		  </fieldset>
+		  <div class="inner-form">
+
+			<div class="input-field first-wrap">
+			  <div class="icon-wrap">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+				  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"></path>
+				</svg>
+			  </div>
+			  <input id="search" formControlName="source" class="form-control" type="text" placeholder="FROM"  />
+			</div>
+
+			<div class="input-field first-wrap" >
+			  <div class="icon-wrap">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+				  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"></path>
+				</svg>
+			  </div>
+			  <input id="search" type="text" formControlName="destination" class="form-control" placeholder="TO" />
+			</div>
+
+			<div class="input-field first-wrap" >
+			  <div class="icon-wrap">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+				  <path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"></path>
+				</svg>
+			  </div>
+			  <input  formControlName="viewdate" class="form-control" id="return" type="date" placeholder="1 Aug 2021" />
+			</div>
+			<div class="input-field fifth-wrap">
+			  <button class="btn-search" type="button" (click) = "submitDetails()" >SEARCH</button>
+			</div>
+		  </div>
+		</form>
+	  </div>
+
+
+
+	<!-- Track My Bus - Smarter Way To Travel Container -->
+	<div class="track-my-bus bg-light p-4 mb-5 pb-5" style="min-width: 100%;">
+		<div class="mb-5">
+			<div class="float-left mr-5 ml-5">
+				<img src="https://i.postimg.cc/mkGxnvzj/tmb-img.png" alt="tmb_img">
+			</div>
+
+			<div class="d-table-cell align-middle pl-5 pr-5">
+				<h3>TRACK MY BUS - Smarter Way To Travel</h3>
+				<p class="text-muted">Track your bus with our ‘Track My Bus’ feature and know the exact location in real-time.Stay informed and keep your family informed!</p>
+				<button class="btn btn-light btn-outline-danger">Know More</button>
+			</div>
+		</div>
+
+		<hr class="w-75 border">
+
+		<div class="d-flex justify-content-around p-5">
+			<div class="text-center">
+				<div class="lead text-muted font-weight-normal">BUSES</div>
+				<h1 class="text-danger">10,000</h1>
+				<div class="text-muted">Total buses currently being tracked</div>
+			</div>
+
+			<div class="text-center">
+				<div class="lead text-muted font-weight-normal">ROUTES</div>
+				<h1 class="text-danger">60,000</h1>
+				<div class="text-muted">Total routes covered by live tracking</div>
+			</div>
+
+			<div class="text-center">
+				<div class="lead text-muted font-weight-normal">USERS</div>
+				<h1 class="text-danger">40,000</h1>
+				<div class="text-muted">Total users using Track My Bus feature</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Convenience On-The-Go IOS/Android Container -->
+	<div class="ios-android-container position-relative mb-5">
+		<div>		<!-- Background Image Container -->
+			<div class="d-flex justify-content-around">
+				<div class="pt-4">
+					<h3>CONVENIENCE ON-THE-GO.</h3>
+					<div class="w-75">
+						<p class="text-dark small">Exclusive features on mobile include</p>
+						<p class="text-dark small">redBus NOW - when you need a bus in the next couple of hours. Board a bus on its way.</p>
+						<p class="text-dark small">Boarding Point Navigation - Never lose your way while travelling to your boarding point!</p>
+						<p class="text-dark small">1-click Booking - Save your favourite payment options securely on redBus, and more.</p>
+						<p class="text-dark small">Download the app.</p>
+						<p class="text-dark small">Enter your mobile number below to download the redBus mobile app.</p>
+						<!-- SMS me the link -->
+						<form class="form-inline">
+							<select class="form-control form-control-sm mr-2 mb-2">
+								<option>+91</option>
+							</select>
+							<input class="form-control form-control-sm mr-2 mb-2 w-50" type="text" placeholder="Enter your mobile number">
+							<button class="btn btn-outline-danger btn-sm mb-2" type="submit">SMS ME THE LINK</button>
+						</form>
+						<!-- Download redBus Application -->
+						<button class="btn btn-dark rounded-circle mr-2"><i class="fab fa-apple"></i></button>
+						<button class="btn btn-dark rounded-circle"><i class="fab fa-google-play"></i></button>
+					</div>
+				</div>
+
+				<div>
+					<img src="https://i.postimg.cc/TP4ftNJN/IOS-Android-device.png" alt="IOS_Android_device" width="420">
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- We Promise To Deliver Container -->
+	<div class="we-promise-container bg-light p-3 pb-5">
+		<div class="text-center m-4">
+			<img src="https://i.postimg.cc/QN5hqb9S/promise.png" alt="promise" width="85">
+			<h2 class="text-dark m-2">WE PROMISE TO DELIVER</h2>
+		</div>
+
+		<div class="text-center d-flex">
+			<div class="border bg-white w-25">
+				<div class="p-4"><img src="https://i.postimg.cc/wMKHptPh/maximum-choices.png" alt="maximum_choices" width="120"></div>
+				<div class="mb-5 m-4 font-weight-light lead">MAXIMUM CHOICE</div>
+				<div class="m-4 p-1 text-muted">We give you the widest number of travel options across thousands of routes.</div>
+			</div>
+
+			<div class="border bg-white w-25">
+				<div class="p-4"><img src="https://i.postimg.cc/Y2mqs7V6/customer-care.png" alt="customer_care" width="91"></div>
+				<div class="mb-5 mt-4 font-weight-light lead">SUPERIOR CUSTOMER SERVICE</div>
+				<div class="m-4 p-1 text-muted">We put our experience and relationships to good use and are available to solve your travel issues.</div>
+			</div>
+
+			<div class="border bg-white w-25">
+				<div class="p-4"><img src="https://i.postimg.cc/JnHmv3Tr/lowest-Fare.png" alt="lowest_Fare" width="120"></div>
+				<div class="mb-5 mt-4 font-weight-light lead">LOWEST PRICES</div>
+				<div class="m-4 p-1 text-muted">We always give you the lowest price with the best partner offers.</div>
+			</div>
+
+			<div class="border bg-white w-25">
+				<div class="p-4"><img src="https://i.postimg.cc/k4LMgYVR/benefits.png" alt="benefits" width="120"></div>
+				<div class="mb-5 mt-4 font-weight-light lead">UNMATCHED BENEFITS</div>
+				<div class="m-4 p-1 text-muted">We take care of your travel beyond ticketing by providing you with innovative and unique benefits.</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Adding Bootstrap CDN - jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<!-- Adding Bootstrap CDN - Popper JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<!-- Adding Bootstrap CDN - Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<!-- Adding JavaScript -->
+	<script type="text/javascript" src="js/app.js"></script>
+  
+
+
+
+<!--
+Link to Gallery of all Images: https://postimg.cc/gallery/oazy3484/
+
+Page URL: https://postimg.cc/gallery/oazy3484/96b90fd4/
+-->
