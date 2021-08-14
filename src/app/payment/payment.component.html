@@ -1,0 +1,178 @@
+<p>payment works!</p>
+<!doctype html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>Payment</title>
+    <link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' rel='stylesheet'>
+    <link href='https://use.fontawesome.com/releases/v5.8.1/css/all.css' rel='stylesheet'>
+    <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+    <style>
+            
+        body {
+            background: white;
+            
+        }
+        a {
+            text-decoration: none; 
+            color: white; 
+        }
+        .rounded {
+            border-radius: 1rem
+        }
+
+        .nav-pills .nav-link {
+            color: #555
+        }
+
+        .nav-pills .nav-link.active {
+            color: white
+        }
+
+        input[type="radio"] {
+            margin-right: 5px
+        }
+
+        .bold {
+            font-weight: bold
+
+        }
+    </style>
+</head>
+<div class="wrapper1"style = "background-color:#DC3545;
+position:fixed;
+top:0;
+width:100%;
+z-index:100;">
+    <nav>
+      <input type="checkbox" id="show-search">
+      <input type="checkbox" id="show-menu">
+      <label for="show-menu" class="menu-icon"><i class="fas fa-bars"></i></label>
+      <div class="content1">
+        <div class="logo"><a href="#">Bus Registration</a>
+        </div>
+      </div>
+        <div style="text-align: right;" class = "content1">
+          <ul class="links" >
+            <li><a href="#">Bus Hire</a></li>
+            <li><a href="#">About</a></li>
+            <li>
+              <a href="#" class="desktop-link">Manage Bookings</a>
+              <input type="checkbox" id="show-features">
+              <label for="show-features">Manage Bookings</label>
+              <ul>
+                <li><a href="#">Cancel</a></li>
+                <li><a href="#">Change Password</a></li>
+                <li><a href="#">Profile</a></li>
+              </ul>
+            <li><a href="#">Feedback</a></li>
+  
+            <li>
+              <a href="#" class="desktop-link1">Login/Signup</a>
+              <input type="checkbox" id="show-features1">
+              <label for="show-features1">Login/Signup</label>
+              <ul>
+                <li><a  routerLink="/registration">SignUp</a></li>
+                <li><a  routerLink="/login">Login</a></li>
+                <li><a class = "admin" routerLink="/admin">Admin Login</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+    </nav>
+  </div>
+<body oncontextmenu='return false' class='snippet-body' style = "margin-top:100px;">
+    <div class="container py-5" >
+    <!-- For demo purpose -->
+    <div class="row mb-4">
+        <div class="col-lg-8 mx-auto text-center">
+            <h1 class="display-6"> Payment </h1>
+        </div>
+    </div> <!-- End -->
+    <div class="row">
+        <div class="col-lg-6 mx-auto">
+            <div class=" ">
+                <div class="">
+                    <div class="bg-white shadow-sm pt-4 pl-2 pr-2 pb-2">
+                        <!-- Credit card form tabs -->
+                        <ul role="tablist" class="nav bg-light nav-pills rounded nav-fill mb-3">
+                            <li class="nav-item"> <a data-toggle="pill" class="nav-link active "> <i class="fas fa-credit-card mr-2"></i> Credit Card </a> </li>
+                            
+                        </ul>
+                    </div> <!-- End -->
+                    <!-- Credit card form content -->
+                    <div class="tab-content">
+                        <!-- credit card info-->
+                        <div id="credit-card" class="tab-pane fade show active pt-3">
+                            <form role="form" onsubmit="event.preventDefault()">
+                                <div class="form-group"> <label for="username">
+                                        <h6>Card Owner</h6>
+                                    </label> <input type="text" name="username" placeholder="Card Owner Name" required class="form-control "> </div>
+                                <div class="form-group"> <label for="cardNumber">
+                                        <h6>Card number</h6>
+                                    </label>
+                                    <div class="input-group"> <input type="text" name="cardNumber" placeholder="Valid card number" class="form-control " required>
+                                        <div class="input-group-append"> <span class="input-group-text text-muted"> <i class="fab fa-cc-visa mx-1"></i> <i class="fab fa-cc-mastercard mx-1"></i> <i class="fab fa-cc-amex mx-1"></i> </span> </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-8">
+                                        <div class="form-group"> <label><span class="hidden-xs">
+                                                    <h6>Expiration Date</h6>
+                                                </span></label>
+                                            <div class="input-group"> <input type="number" placeholder="MM" name="" class="form-control" required> <input type="number" placeholder="YY" name="" class="form-control" required> </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group mb-4"> <label data-toggle="tooltip" title="Three digit CV code on the back of your card">
+                                                <h6>CVV <i class="fa fa-question-circle d-inline"></i></h6>
+                                            </label> <input type="text" required class="form-control"> </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer"> <button type="button" class="subscribe btn btn-primary btn-block shadow-sm" (click) = "donepayment()"> Confirm Payment </button>
+                            </div>
+                            </form>
+                        </div>
+                    </div> <!-- End -->
+                    <!-- Paypal info -->
+                    <div id="paypal" class="tab-pane fade pt-3">
+                        <h6 class="pb-2">Select your UPI account type</h6>
+                        <div class="form-group "> <label class="radio-inline"> <input type="radio" name="optradio" checked> GPAY </label> <label class="radio-inline"> <input type="radio" name="optradio" class="ml-5">Paytm </label></div>
+                        <p> <button type="button" class="btn btn-primary "><i class="fab fa-paypal mr-2"></i> <a href = "confirm.html">Make Payment</a></button> </p>
+                        <!-- <p class="text-muted"> Note: After clicking on the button, you will be directed to a secure gateway for payment. After completing the payment process, you will be redirected back to the website to view details of your order. </p> -->
+                    </div> <!-- End -->
+                   
+                      
+                    <!-- bank transfer info -->
+                    <div id="net-banking" class="tab-pane fade pt-3">
+                        <div class="form-group "> <label for="Select Your Bank">
+                                <h6>Select your Bank</h6>
+                            </label> <select class="form-control" id="ccmonth">
+                                <option value="" selected disabled>--Please select your Bank--</option>
+                                <option>SBI</option>
+                                <option>HDFC</option>
+                                <option>ICICI</option>
+                                <option>Kotak</option>
+                                
+                                
+                            </select> </div>
+                        <div class="form-group">
+                                <p><button type="button" class="btn btn-primary " > Proceed Payment</button> </p>
+                        </div>
+                        <!-- <p class="text-muted">Note: After clicking on the button, you will be directed to a secure gateway for payment. After completing the payment process, you will be redirected back to the website to view details of your order. </p> -->
+                    </div> <!-- End -->
+                    <!-- End -->
+                </div>
+            </div>
+        </div>
+    </div>
+                                <script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js'></script>
+                                <script type='text/javascript'>$(function() {
+$('[data-toggle="tooltip"]').tooltip()
+})</script>
+    </div>
+    </body>
+</html>
+
+
