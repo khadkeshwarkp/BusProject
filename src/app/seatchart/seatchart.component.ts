@@ -132,7 +132,7 @@ subscription?:Subscription;
     // console.log(seatNo)
     let id= document.getElementById(seatNo)
     id!.innerHTML=`<img src="../assets/img/bookseat.png">`
-    id!.removeEventListener("click",this.Seat);
+    id!.removeEventListener("click",this.id);
   }
 
   ngOnDestroy(){
