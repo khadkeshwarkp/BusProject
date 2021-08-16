@@ -3,7 +3,7 @@ position:fixed;
 top:0;
 width:100%;
 z-index:100;">
-  <nav>
+  <!-- <nav>
     <input type="checkbox" id="show-search">
     <input type="checkbox" id="show-menu">
     <label for="show-menu" class="menu-icon"><i class="fas fa-bars"></i></label>
@@ -37,7 +37,49 @@ z-index:100;">
           </li>
         </ul>
       </div>
-  </nav>
+  </nav> -->
+
+  <nav class="navbar navbar-expand-sm bg-danger navbar-dark fixed-top">
+		<input type="checkbox" id="show-search">
+      <input type="checkbox" id="show-menu">
+      <label for="show-menu" class="menu-icon"><i class="fas fa-bars"></i></label>
+      <div class="content1">
+        <div class="logo"><a href="#">Bus Registration</a>
+        </div>
+      </div>
+        <div style="text-align: right;" class = "content1">
+          <ul class="links" >
+            <li><a routerLink = "/bushire">Bus Hire</a></li>
+
+            <li *ngIf = "curruser != null">
+              <a  class="desktop-link1">Manage Bookings</a>
+              <input type="checkbox" id="show-features1">
+              <label for="show-features1" >Manage Bookings</label>
+              <ul>
+				<div *ngIf="curruser != null; else elseBlock">
+					<li ><a [routerLink] = "['/cancelbooking']">Cancel</a></li>
+				</div>
+				<ng-template #elseBlock >
+					<li ><a [routerLink] = "['/login']">Cancel</a></li>
+				</ng-template>
+                
+              </ul>
+			  </li>
+			  <li><a [routerLink] = "['/userprofile/',curruser?.userId]" *ngIf = "curruser != null">{{curruser?.fullName}}</a></li>
+            <li>
+              <a  class="desktop-link1">Login/Signup</a>
+              <input type="checkbox" id="show-features1">
+              <label for="show-features1">Login/Signup</label>
+              <ul>
+                <li><a class = "registration" routerLink="/registration" *ngIf = "curruser == null">SignUp</a></li>
+                <li><a class = "login" routerLink="/login" *ngIf = "curruser == null">Login</a></li>
+				<li><a class = "admin" routerLink="/admin" *ngIf = "curruser == null">Admin Login</a></li>
+				<li><a class = "login" routerLink="homepage" *ngIf = "curruser != null" (click) = "logout()">Logout</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+	</nav>
 </div>
 
 <div class="container-fluid pt-5 mb-5"  >
@@ -256,7 +298,7 @@ z-index:100;">
               </div>
              
             </div>
-            <div *ngIf="alert"class="alert alert-danger ">You can buy only 4 seats in one time </div>
+            <div *ngIf="alert"class="alert alert-danger ">seat limit is four and you can't selected already selected seat</div>
           </div>
           <div class="col-md-6 ">
           <div class="seat_plan">

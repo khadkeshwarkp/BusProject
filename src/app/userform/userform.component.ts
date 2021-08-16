@@ -19,8 +19,9 @@ export class UserFormComponent implements OnInit {
   constructor(
     private router:Router,private route:ActivatedRoute
   ) { }
-
+    curruser? :User;
   ngOnInit() {
+    this.curruser = JSON.parse(localStorage.getItem("userlogin")!)
     this.route.queryParams.subscribe((params) =>{
       this.bookings = JSON.parse(params.data);
       
@@ -30,9 +31,13 @@ export class UserFormComponent implements OnInit {
     console.log(this.schedules)
     
     this.seats = JSON.parse(localStorage.getItem("seats")!)
-    
-  }
 
+  }
+  logout(){
+    localStorage.removeItem("userlogin");
+    this.curruser = undefined;
+    this.router.navigate(['/homepage'])
+  }
   userForm(form: NgForm) {
     this.bookings!.customerName = form.value.user_name;
     this.bookings!.customerContact = form.value.user_mobile;

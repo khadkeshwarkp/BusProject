@@ -9,7 +9,7 @@ input {
    
   
   button {
-    width: 50%;
+    width: 100%;
     background-color: #4CAF50;
     color: white;
     padding: 14px 20px;
@@ -22,14 +22,14 @@ input {
   
   div {
     border-radius: 5px;
-    /* background-color: #f2f2f2; */
     padding: 0.5px 0.5px 0.5px 0.5px;
+    align-content: center;
     
   }
 
- .box1 {
-
-        width:700px;
+ .container, .row flex-lg-nowrap {
+        align-content: center;
+        width: 700px;  
         overflow: hidden;  
         margin: auto;  
         margin: 20 0 0 450px;  
@@ -39,6 +39,11 @@ input {
 
   }
 
-  h1{
-      text-align: center;
-  }
+  body{
+    margin-top:100px;
+    align-content: center;
+}
+
+h4{
+    text-align: center;
+}

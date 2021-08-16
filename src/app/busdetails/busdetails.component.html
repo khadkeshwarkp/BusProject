@@ -30,41 +30,47 @@
     top:0;
     width:100%;
     z-index:100;">
-        <nav>
-          <input type="checkbox" id="show-search">
-          <input type="checkbox" id="show-menu">
-          <label for="show-menu" class="menu-icon"><i class="fas fa-bars"></i></label>
-          <div class="content1">
-            <div class="logo"><a href="#">Bus Registration</a>
-            </div>
-          </div>
-            <div style="text-align: right;" class = "content1">
-              <ul class="links" >
-                <li><a href="#">Bus Hire</a></li>
-                <li><a href="#">About</a></li>
-                <li>
-                  <a href="#" class="desktop-link">Manage Bookings</a>
-                  <input type="checkbox" id="show-features">
-                  <label for="show-features">Manage Bookings</label>
-                  <ul>
-                    <li><a href="#">Cancel</a></li>
-                    <li><a href="#">Change Password</a></li>
-                    <li><a href="#">Profile</a></li>
-                  </ul>
-      
-                <li>
-                  <a href="#" class="desktop-link1">Login/Signup</a>
-                  <input type="checkbox" id="show-features1">
-                  <label for="show-features1">Login/Signup</label>
-                  <ul>
-                    <li><a  routerLink="/registration">SignUp</a></li>
-                    <li><a  routerLink="/login">Login</a></li>
-                    <li><a class = "admin" routerLink="/admin">Admin Login</a></li>
-                  </ul>
-                </li>
+  <nav class="navbar navbar-expand-sm bg-danger navbar-dark fixed-top">
+		<input type="checkbox" id="show-search">
+      <input type="checkbox" id="show-menu">
+      <label for="show-menu" class="menu-icon"><i class="fas fa-bars"></i></label>
+      <div class="content1">
+        <div class="logo"><a href="#">Bus Registration</a>
+        </div>
+      </div>
+        <div style="text-align: right;" class = "content1">
+          <ul class="links" >
+            <li><a routerLink = "/bushire">Bus Hire</a></li>
+
+            <li *ngIf = "curruser != null">
+              <a  class="desktop-link1">Manage Bookings</a>
+              <input type="checkbox" id="show-features1">
+              <label for="show-features1" >Manage Bookings</label>
+              <ul>
+				<div *ngIf="curruser != null; else elseBlock">
+					<li ><a [routerLink] = "['/cancelbooking']">Cancel</a></li>
+				</div>
+				<ng-template #elseBlock >
+					<li ><a [routerLink] = "['/login']">Cancel</a></li>
+				</ng-template>
+                
               </ul>
-            </div>
-        </nav>
+			  </li>
+			  <li><a [routerLink] = "['/userprofile/',curruser?.userId]" *ngIf = "curruser != null">{{curruser?.fullName}}</a></li>
+            <li>
+              <a  class="desktop-link1">Login/Signup</a>
+              <input type="checkbox" id="show-features1">
+              <label for="show-features1">Login/Signup</label>
+              <ul>
+                <li><a class = "registration" routerLink="/registration" *ngIf = "curruser == null">SignUp</a></li>
+                <li><a class = "login" routerLink="/login" *ngIf = "curruser == null">Login</a></li>
+				<li><a class = "admin" routerLink="/admin" *ngIf = "curruser == null">Admin Login</a></li>
+				<li><a class = "login" routerLink="homepage" *ngIf = "curruser != null" (click) = "logout()">Logout</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+	</nav>
       </div>
 
 

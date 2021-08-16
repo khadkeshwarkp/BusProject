@@ -26,7 +26,12 @@ import { UpdaterouteComponent } from './updateroute/updateroute.component';
 import { UserdetailsComponent } from './userdetails/userdetails.component';
 import { ViewBusComponent } from './view-bus/view-bus.component';
 import { ViewroutesComponent } from './viewroutes/viewroutes.component';
-
+import { BushireComponent } from './bushire/bushire.component';
+import { BushirepaymentComponent } from './bushirepayment/bushirepayment.component';
+import { ThankyoupageComponent } from './thankyoupage/thankyoupage.component';
+import { UserprofileComponent } from './userprofile/userprofile.component';
+import { DatePipe } from '@angular/common';
+import { CancelbookingComponent } from './cancelbooking/cancelbooking.component';
 
 
 @NgModule({
@@ -52,7 +57,12 @@ import { ViewroutesComponent } from './viewroutes/viewroutes.component';
     UpdaterouteComponent,
     UserdetailsComponent,
     ViewBusComponent,
-    ViewroutesComponent
+    ViewroutesComponent,
+    BushireComponent,
+    BushirepaymentComponent,
+    ThankyoupageComponent,
+    UserprofileComponent,
+    CancelbookingComponent
   ],
   imports: [
     BrowserModule,
@@ -60,9 +70,9 @@ import { ViewroutesComponent } from './viewroutes/viewroutes.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    BrowserModule, ModalModule.forRoot()
+    BrowserModule, ModalModule.forRoot(),
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

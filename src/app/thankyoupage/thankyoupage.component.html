@@ -1,0 +1,14 @@
+<p>thankyoupage works!</p>
+<div class="feedback" style = "margin-left: 400px;">
+    <p>Dear Customer,<br>
+        <br>
+    Thank you for using our Website. We would like to know how we performed. Please spare some moments to give us your valuable feedback as it will help us in improving our service.</p>
+     
+   
+    <label for="feedbacktext">Please Enter your Feedback</label><br/><br/>
+    <textarea cols="75" name="commentText" rows="5"  [(ngModel)]='feedbackval'></textarea><br>
+    <br>
+      <div class="clear"></div> 
+    <input style="background:#43a7d5;color:#fff;padding:12px;border:0" type="submit" (click) = "submitfeedback()"value="Submit your review" routerLink = "/homepage"> 
+    
+</div>

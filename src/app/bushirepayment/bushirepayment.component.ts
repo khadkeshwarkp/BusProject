@@ -5,32 +5,23 @@ import { Seat } from '../models/seat';
 import { User } from '../models/user';
 import { BookingService } from '../services/booking.service';
 @Component({
-  selector: 'app-payment',
-  templateUrl: './payment.component.html',
-  styleUrls: ['./payment.component.css']
+  selector: 'app-bushirepayment',
+  templateUrl: './bushirepayment.component.html',
+  styleUrls: ['./bushirepayment.component.css']
 })
-export class PaymentComponent implements OnInit {
+export class BushirepaymentComponent implements OnInit {
   bookings?:Booking
   bushiredata?:any
-  user?:User
+  user?:User;
+  curruser?:User
   seats?:Seat[];
-  curruser?:User;
   constructor(public bookingService:BookingService,private router:Router,private route:ActivatedRoute ) { }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) =>{
-      this.bushiredata = JSON.parse(params.bushiredata);
-      
+      this.bookings = JSON.parse(params.bookings);
+
     })
-    console.log("ing payment")
-    console.log(this.bushiredata)
-    this.route.queryParams.subscribe((params) =>{
-      this.bookings = JSON.parse(params.data);
-      
-    })
-    console.log(this.bookings?.numberOfSeats);
-    this.seats = JSON.parse(localStorage.getItem("seats")!)
-    
     this.curruser = JSON.parse(localStorage.getItem("userlogin")!)
   }
   logout(){
@@ -39,11 +30,9 @@ export class PaymentComponent implements OnInit {
     this.router.navigate(['/homepage'])
   }
   donepayment(){
-    this.bookings!.bookingStatus = 1;
-    this.bookingService.Postdata(this.bookings!,this.seats);
-    
-    
-    this.router.navigate(['ticket'],{ queryParams:{data:JSON.stringify(this.bookings)}})
+    console.log(this.bookings)
+    this.bookingService.postbooking(this.bookings!)
+    this.router.navigate(['thankyoupage'],{ queryParams:{bookings:JSON.stringify(this.bookings)}})
   }
   
 }

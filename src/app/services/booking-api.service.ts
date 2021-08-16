@@ -19,6 +19,11 @@ export class BookingApiService {
     return this.httpClient.get<Booking[]>(this.ApiUrl + '/bookings/')
     
   }
+  
+  getallbyid(id:number): Observable<Booking[]> {
+    return this.httpClient.get<Booking[]>(this.ApiUrl + '/bookings/getallbyid?id=' + id)
+    
+  }
   create(product: any): Observable<Booking> {
     return this.httpClient.post<Booking>(this.ApiUrl + '/bookings/', JSON.stringify(product), this.httpOptions)    
   } 

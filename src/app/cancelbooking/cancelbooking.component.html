@@ -1,0 +1,33 @@
+
+
+      <div style="margin-left: 50px;">
+        <h1>Booking Details</h1>
+     
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Booking Id</th>
+                    <th>Schedule Id</th>
+                    <th>Total Amount</th>
+                    <th>Number of Seats</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let product of booking">
+                    <td>{{product.bookingId}}</td>
+                    <td>{{product.scheduleId}}</td>
+                    <td>{{product.totalAmount}}</td>
+                    <td>{{product.numberOfSeats}}</td>    
+                    <td>          
+                    <button type="button"  (click)="delete(this.product.bookingId)"  >Remove</button> 
+                    </td>
+                    <td>
+                       <!-- <button [routerLink]="['/update/', product.userId]">Update</button> -->
+                        <!-- <button type="button" (click)="delete(product.bookingId)">Remove</button>  -->
+                    </td>
+                     
+                   
+                </tr>
+            </tbody>
+        </table>
+    </div>

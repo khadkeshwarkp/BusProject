@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import{HttpClient,HttpErrorResponse,HttpHeaders} from '@angular/common/http'
 import {  Observable, throwError } from 'rxjs';
 import { Bus } from '../models/bus';
+import { Seat } from '../models/seat';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,10 @@ export class ApiCallService {
   constructor(private httpClient: HttpClient)
    {
    }
- 
+   getallseatsbyid(id:number): Observable<Seat[]> {
+    return this.httpClient.get<Seat[]>(this.ApiUrl + '/seats/getallseatsbyid?id=' + id)
+    
+  }
   getAll(): Observable<Bus[]> {
     return this.httpClient.get<Bus[]>(this.ApiUrl + '/buses/')
     
@@ -34,8 +38,15 @@ export class ApiCallService {
     return this.httpClient.put<Bus>(this.ApiUrl + '/buses/' + id,  JSON.stringify(product), this.httpOptions)
     
   }
+  deleteseat(id:any){
+    console.log(id)
+    this.httpClient.delete<Seat>(this.ApiUrl + '/seats/' + id , this.httpOptions).subscribe();
+    
+     
+  }
+
   delete(id:any){
-    return this.httpClient.delete<Bus>(this.ApiUrl + '/buses/' + id, this.httpOptions)
+    this.httpClient.delete<Bus>(this.ApiUrl + '/buses/' + id, this.httpOptions).subscribe();
     
      
   }

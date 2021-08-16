@@ -7,6 +7,7 @@ import { Bus } from '../models/bus';
 import { SeatchartService } from '../services/seatchart.service';
 import { Subscription } from 'rxjs';
 import { Booking } from '../models/booking';
+import { User } from '../models/user';
 
 @Component({
   selector: 'app-seatchart',
@@ -22,6 +23,7 @@ fillupSeat:string[] = [];
 alert=false;
 id2?:Number;
 seatid1:number = 0;
+curruser?:User;
 subscription?:Subscription;
   constructor(
     private router:Router,private route:ActivatedRoute ,
@@ -29,6 +31,7 @@ subscription?:Subscription;
   ) { }
     data:any;
   ngOnInit() {
+    this.curruser = JSON.parse(localStorage.getItem("userlogin")!)
     this.route.queryParams.subscribe((params) =>{
       this.data = JSON.parse(params.data);
     })
@@ -44,16 +47,24 @@ subscription?:Subscription;
         })
     this.getbookSeat();
   }
-
+  logout(){
+    localStorage.removeItem("userlogin");
+    this.curruser = undefined;
+    this.router.navigate(['/homepage'])
+  }
   Seat(e:any) {
     console.log("seatchart:")
     console.log(this.data.busId)
     // console.log(this.data);
+    let seats=[];
+   seats= this.showSeatList.map(iteam=>{
+     return iteam.seatNo
+   })
     let id = document.getElementById(e);
 
-      if((this.showSeatList.length!=4)) {
+      if((this.fillupSeat.indexOf(String(e))<0 ) && (this.showSeatList.length!=4)) {
         
-        id!.innerHTML = `<img src="../assets/img/fseat.png" alt="">`
+        id!.innerHTML = `   <img src="../assets/img/fseat.png" alt="">`
         
         let seat={
           
@@ -65,7 +76,7 @@ subscription?:Subscription;
         this.seatid1 = this.seatid1 + 1;
         this.totalFare(this.data.fareAmount);
         this.showList(seat);
-        
+        this.fillupSeat.push(e)
         
       }
       else{
@@ -100,7 +111,7 @@ subscription?:Subscription;
     fareAmount:this.data.fareAmount,
     totalAmount:this.total,
     bookingStatus:0,
-    userId:1,
+    userId:this.curruser?.userId,
     customerName:"",
     customerContact:"",
     customerEmail:"",
@@ -121,6 +132,7 @@ subscription?:Subscription;
     
     this.subscription=this.BusService.getFilledseats(this.data.busId).subscribe((res:string[])=>{
         for(let i of res){
+          console.log(i)
           this.fillupSeat.push(i)
           this.changeSeatColor(i)
         }
@@ -131,8 +143,8 @@ subscription?:Subscription;
     // console.log("seatchart:")
     // console.log(seatNo)
     let id= document.getElementById(seatNo)
-    id!.innerHTML=`<img src="../assets/img/bookseat.png">`
-    id!.removeEventListener("click",this.id);
+    id!.innerHTML=`  <img src="../assets/img/bookseat.png">`
+    id!.removeEventListener("click",this.Seat);
   }
 
   ngOnDestroy(){

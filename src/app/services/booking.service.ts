@@ -15,18 +15,41 @@ export class BookingService {
     })
   }
   constructor(private httpClient: HttpClient) { }
-  
-  PostBooking(bookings:Booking) {
+  waitForOneSecond() {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        resolve("I promise to return after one second!");
+      }, 1000);
+    });
+  }
+  async Postdata(bookings:Booking,seats:any) {
     console.log( bookings)
     this.httpClient.post(this.ApiUrl + '/bookings',bookings).subscribe(res => {
+
+      
   },
       err => console.log(err)); 
-  }
 
-  PostSeat(seats:Seat) {
-    console.log( seats)
-    this.httpClient.post(this.ApiUrl + '/seats',seats).subscribe(res => {
+    this.waitForOneSecond().then((value) => {
+      seats?.forEach((value:any) => {
+        console.log( value)
+          this.httpClient.post(this.ApiUrl + '/seats',value).subscribe(res => {
+        },
+            err => console.log(err)); 
+      });
+    });
+      
+  }
+  updatefeedback(id:any,bookings:Booking) {
+    this.httpClient.put<Booking>(this.ApiUrl + '/bookings/' + id,bookings).subscribe(res => {
     },
         err => console.log(err)); 
   }
+  postbooking(bookings:Booking) {
+    this.httpClient.post(this.ApiUrl + '/bookings',bookings).subscribe(res => {
+    },
+        err => console.log(err));  
+  }
+
+
 }

@@ -22,6 +22,11 @@ import { UpdateComponent } from './update/update.component';
 import { CreateComponent } from './create/create.component';
 import { UpdaterouteComponent } from './updateroute/updateroute.component';
 import { BookingsComponent } from './bookings/bookings.component';
+import { BushireComponent } from './bushire/bushire.component';
+import { BushirepaymentComponent } from './bushirepayment/bushirepayment.component';
+import { ThankyoupageComponent } from './thankyoupage/thankyoupage.component';
+import { UserprofileComponent } from './userprofile/userprofile.component';
+import { CancelbookingComponent } from './cancelbooking/cancelbooking.component';
 
 
 const routes: Routes = [
@@ -33,6 +38,12 @@ const routes: Routes = [
   {path : 'userform' , component : UserFormComponent},
   {path : 'payment' , component : PaymentComponent},
   {path : 'ticket' , component : TicketComponent},
+  {path : 'bushire' , component : BushireComponent},
+  {path : 'bushirepayment' , component : BushirepaymentComponent},
+  {path : 'thankyoupage' , component : ThankyoupageComponent},
+  {path : 'userprofile/:userId' , component : UserprofileComponent},
+  {path : 'userprofile' , component : UserprofileComponent},
+  {path : 'cancelbooking' , component : CancelbookingComponent},
   { path: '',   redirectTo: '/homepage', pathMatch: 'full' },
 
 

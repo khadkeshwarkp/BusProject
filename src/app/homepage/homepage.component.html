@@ -132,26 +132,32 @@
       </div>
         <div style="text-align: right;" class = "content">
           <ul class="links" >
-            <li><a href="#">Bus Hire</a></li>
-            <li><a href="#">About</a></li>
-            <li>
-              <a href="#" class="desktop-link">Manage Bookings</a>
+            <li><a routerLink = "/bushire">Bus Hire</a></li>
+
+            <li *ngIf = "curruser != null">
+              <a  class="desktop-link">Manage Bookings</a>
               <input type="checkbox" id="show-features">
-              <label for="show-features">Manage Bookings</label>
+              <label for="show-features" >Manage Bookings</label>
               <ul>
-                <li><a href="#">Cancel</a></li>
-                <li><a href="#">Change Password</a></li>
-                <li><a href="#">Profile</a></li>
+				<div *ngIf="curruser != null; else elseBlock">
+					<li ><a [routerLink] = "['/cancelbooking']">Cancel</a></li>
+				</div>
+				<ng-template #elseBlock >
+					<li ><a [routerLink] = "['/login']">Cancel</a></li>
+				</ng-template>
+                
               </ul>
-  
+			  </li>
+			  <li><a [routerLink] = "['/userprofile/',curruser?.userId]" *ngIf = "curruser != null">{{curruser?.fullName}}</a></li>
             <li>
-              <a href="#" class="desktop-link">Login/Signup</a>
+              <a  class="desktop-link">Login/Signup</a>
               <input type="checkbox" id="show-features">
               <label for="show-features">Login/Signup</label>
               <ul>
-                <li><a class = "registration" routerLink="/registration">SignUp</a></li>
-                <li><a class = "login" routerLink="/login">Login</a></li>
-				<li><a class = "admin" routerLink="/admin">Admin Login</a></li>
+                <li><a class = "registration" routerLink="/registration" *ngIf = "curruser == null">SignUp</a></li>
+                <li><a class = "login" routerLink="/login" *ngIf = "curruser == null">Login</a></li>
+				<li><a class = "admin" routerLink="/admin" *ngIf = "curruser == null">Admin Login</a></li>
+				<li><a class = "login" routerLink="homepage" *ngIf = "curruser != null" (click) = "logout()">Logout</a></li>
               </ul>
             </li>
           </ul>

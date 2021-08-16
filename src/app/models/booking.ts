@@ -12,4 +12,5 @@ export class Booking {
     customerEmail?:string;
     feedback?:string;
     paymentId?:Number;
+    bushire?:Number;
 }

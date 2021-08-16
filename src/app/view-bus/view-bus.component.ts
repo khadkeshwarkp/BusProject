@@ -22,7 +22,7 @@ export class ViewBusComponent implements OnInit {
   }
   delete(BusId:any)
 {
-  this.service.delete(BusId).subscribe();
+  this.service.delete(BusId);
   console.log("Deleted Successfully");
   alert("Deleted");
   

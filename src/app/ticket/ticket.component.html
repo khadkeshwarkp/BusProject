@@ -4,8 +4,8 @@ position:fixed;
 top:0;
 width:100%;
 z-index:100;">
-    <nav>
-      <input type="checkbox" id="show-search">
+  <nav class="navbar navbar-expand-sm bg-danger navbar-dark fixed-top">
+		<input type="checkbox" id="show-search">
       <input type="checkbox" id="show-menu">
       <label for="show-menu" class="menu-icon"><i class="fas fa-bars"></i></label>
       <div class="content1">
@@ -14,34 +14,40 @@ z-index:100;">
       </div>
         <div style="text-align: right;" class = "content1">
           <ul class="links" >
-            <li><a href="#">Bus Hire</a></li>
-            <li><a href="#">About</a></li>
-            <li>
-              <a href="#" class="desktop-link">Manage Bookings</a>
-              <input type="checkbox" id="show-features">
-              <label for="show-features">Manage Bookings</label>
+            <li><a routerLink = "/bushire">Bus Hire</a></li>
+
+            <li *ngIf = "curruser != null">
+              <a  class="desktop-link1">Manage Bookings</a>
+              <input type="checkbox" id="show-features1">
+              <label for="show-features1" >Manage Bookings</label>
               <ul>
-                <li><a href="#">Cancel</a></li>
-                <li><a href="#">Change Password</a></li>
-                <li><a href="#">Profile</a></li>
+				<div *ngIf="curruser != null; else elseBlock">
+					<li ><a [routerLink] = "['/cancelbooking']">Cancel</a></li>
+				</div>
+				<ng-template #elseBlock >
+					<li ><a [routerLink] = "['/login']">Cancel</a></li>
+				</ng-template>
+                
               </ul>
-  
+			  </li>
+			  <li><a [routerLink] = "['/userprofile/',curruser?.userId]" *ngIf = "curruser != null">{{curruser?.fullName}}</a></li>
             <li>
-              <a href="#" class="desktop-link1">Login/Signup</a>
+              <a  class="desktop-link1">Login/Signup</a>
               <input type="checkbox" id="show-features1">
               <label for="show-features1">Login/Signup</label>
               <ul>
-                <li><a  routerLink="/registration">SignUp</a></li>
-                <li><a  routerLink="/login">Login</a></li>
-                <li><a class = "admin" routerLink="/admin">Admin Login</a></li>
+                <li><a class = "registration" routerLink="/registration" *ngIf = "curruser == null">SignUp</a></li>
+                <li><a class = "login" routerLink="/login" *ngIf = "curruser == null">Login</a></li>
+				<li><a class = "admin" routerLink="/admin" *ngIf = "curruser == null">Admin Login</a></li>
+				<li><a class = "login" routerLink="homepage" *ngIf = "curruser != null" (click) = "logout()">Logout</a></li>
               </ul>
             </li>
           </ul>
         </div>
-    </nav>
+	</nav>
     
   </div>
-  <div style="margin-top:100px ; text-align: center;">
+  <div style="margin-top:100px ; text-align: center;" *ngIf = "curruser == null">
     <h1>Thanks! You ticket has been successfully created.</h1>
     <h1>Name: {{bookings!.customerName}}</h1>
     <h1>Contact No: {{bookings!.customerContact}}</h1>
@@ -49,4 +55,25 @@ z-index:100;">
     <h1>Total Fare: {{bookings!.totalAmount}}</h1>
     <h1>Total Seats: {{bookings!.numberOfSeats}}</h1>
   </div>
+  <div style="margin-top:100px ; text-align: center;" *ngIf = "curruser != null">
+    <h1>Thanks! You ticket has been successfully created.</h1>
+    <h1>Name: {{curruser!.fullName}}</h1>
+    <h1>Contact No: {{curruser!.contactNo}}</h1>
+    <h1>Email: {{curruser!.emailAddress}}</h1>
+    <h1>Total Fare: {{bookings!.totalAmount}}</h1>
+    <h1>Total Seats: {{bookings!.numberOfSeats}}</h1>
+  </div>
+  <div class="feedback" style = "margin-left: 400px;">
+    <p>Dear Customer,<br>
+        <br>
+    Thank you for using our Website. We would like to know how we performed. Please spare some moments to give us your valuable feedback as it will help us in improving our service.</p>
+     
+   
+    <label for="feedbacktext">Please Enter your Feedback</label><br/><br/>
+    <textarea cols="75" name="commentText" rows="5"  [(ngModel)]='feedbackval'></textarea><br>
+    <br>
+      <div class="clear"></div> 
+    <input style="background:#43a7d5;color:#fff;padding:12px;border:0" type="submit" (click) = "submitfeedback()"value="Submit your review" routerLink = "/homepage"> 
+    
+</div>
 
