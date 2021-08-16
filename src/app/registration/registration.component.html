@@ -1,154 +1,95 @@
 <head>
 	<meta charset="utf-8">
-	<title>Customer Signup</title>
-	
-	
-
-	
+	<title>Signup</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
-
-    
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100">
+            <div class="login100-pic js-tilt" data-tilt style="align-self: center;">
+                <img src="../../assets/images/image.jpg" alt="IMG" >
+            </div>
+  
 
     <div class="box1">
-    <h1>Register Now</h1>
     <form [formGroup]= "ReactiveLogin">
-
-	
+        <div>
+        <span class="login100-form-title">
+            Sign Up 
+       </span>
+       <div class="wrap-input100 validate-input">
 			
 				<div>
                     <p>
-                        <label for= "username">Full Name</label><br>
-                        <input type="text" id="username"name="username" formControlName="name"/>
-                
+                        <input class="input100" type="text" id="username"name="username" formControlName="name" style="width: 400px;" placeholder="Enter Full Name"/>
                     </p>
                     <div *ngIf="!name?.valid">
-                        <div *ngIf="name?.errors?.required">
-                             Username is mandatory
-                        </div>
-                       
+                        <div *ngIf="name?.errors?.required && (name?.dirty ||name?.touched)">
+                             Name is mandatory
+                        </div>                       
+                        
                     </div>
-
+                    <br>
                     <p>
-                        <label for= "username">Email ID</label><br>
-                        <input type="text" id="email"name="email" formControlName="email"/>
-                
+                        <input class="input100" type="text" id="email"name="email" formControlName="email"   placeholder="Enter Email Id"/>
                     </p>
                     <div *ngIf="!email?.valid">
-                        <div *ngIf="email?.errors?.required">
+                        <div *ngIf="email?.errors?.required && (email?.dirty ||email?.touched)">
                              Email is mandatory
                         </div>
+                        
                         <div *ngIf="email?.errors?.pattern">
                             Email ID should have @
                         </div>
-                       
+                        
                     </div>
-
+                    <br>
 				
                     <p>
-                        <label for= "contact">Contact</label><br>
-                        <input type="text" id="contact"  name="contact" formControlName="contact"/>
+                        <input class="input100" type="text" id="contact"name="contact" formControlName="contact"  placeholder="Enter Contact"/>
                     </p>
                     <div *ngIf="!contact?.valid">
-                        <div *ngIf="contact!.errors?.required">
+                        <div *ngIf="contact!.errors?.required && (contact?.dirty ||contact?.touched)">
                              Contact is mandatory
                         </div>
                         <div *ngIf="contact!.errors?.minlength">
                             Contact should be of 10 digits
                             </div>
+                            
                     </div>
-                
+                    <br>
 					<p>
-                        <label for= "password">Password</label><br>
-                        <input type="password" id="pasword" name="password" formControlName="pwd"/>
+                        <input class="input100" type="password" id="password"name="password" formControlName="pwd"  placeholder="Enter Password"/>
                     </p>
-                    <div *ngIf="pwd?.errors?.required">
+                    <div *ngIf="pwd?.errors?.required && (pwd?.dirty ||pwd?.touched)">
                         Password is mandatory.
                     </div>
+                   
+                    <div *ngIf="pwd!.errors?.minlength">
+                        Password should be of 8 digits
+                        </div>
+                        
                     <div *ngIf="pwd?.errors?.pattern">
                         Password should contain atleast one number and one letter.
-                    </div>
-			
-
-					
-
+                    </div>		
+                    <br>
                     <p>
-                        <label for= "Cpassword">Confirm Password</label>
-						<br>
-                        <input type="password" id="Cpassword" name="Cpassword" formControlName="cwd"/>
+                        <input class="input100" type="password" id="Cpassword"name="Cpassword" formControlName="cwd"  placeholder="Enter Password again"/>
                     </p>
-                    <div *ngIf="cwd?.errors?.required">
+                    <div *ngIf="cwd?.errors?.required && (cwd?.dirty ||cwd?.touched)">
                         Mandatory Field
                     </div>
-
+                    <br>
                     
-                    <p>
-                    <button type="button" [disabled]="!ReactiveLogin.valid" (click) = "Check()" >Submit</button>
-                      </p>
+                    <div class="container-login100-form-btn">
+                        <p>
+                         <button type="button" class ="login100-form-btn"[disabled]="!ReactiveLogin.valid" (click) = "Check()" >Submit</button>
+                                      </p>
+                     </div>
                       
 
 
                 </div>
 
-               </form> 
 	</div>
-			   
-
-                <!-- <div class="form-row">
-					<p>
-                        <label for= "contact">Contact</label>
-                        <input type="text" id="contact" #name1 required minlength="10" #contact="ngModel" name="contact" [(ngModel)]="user.contact"/>
-                    </p>
-                    <div *ngIf="!contact?.valid">
-                        <div *ngIf="name.errors?.required">
-                             Contact is mandatory
-                        </div>
-                        <div *ngIf="contact.errors?.minlength">
-                            Contact should atleast be of 10 digits
-                            </div>
-                    </div>
-				</div>
-
-
-                <div class="form-row">
-                    <p>
-                    <label for="gender"> Select your gender</label>
-                   <input type="text" id="gender" #name1 required #gender="ngModel" name="gender" [(ngModel)]="user.gender"/>
-                 </p>
-                 <div *ngIf="name.errors?.required">
-                    Gender is mandatory
-                </div>
-                </div>
-
-                <div class="form-row">
-
-					<p>
-        <label for= "password">Password</label>
-        <input type="password" id="password" name="password" #name1 required minlength="8" #pw="ngModel" name="password" pattern=^[A-Za-z0-9]+$ [(ngModel)]="user.password"/>
-    </p>
-    <div *ngIf="pw.errors?.required">
-        Password is mandatory
-    </div>
-    <div *ngIf="pw.errors?.minlength">
-        Password should have atleast 8 characters
-    </div>
-    <div *ngIf="pw.errors?.pattern">
-        Password should consist of alphanumeric characters
-    </div>
-
-    <p>
-        <label for= "Cpassword">Confirm Password</label>
-        <input type="password" id="Cpassword" name="Cpassword" [(ngModel)]="user.cpassword"/>
-    </p>
-
-    <div *ngIf="user.password!=user.cpassword">
-        Passwords don't match
-				</div>
-
-				
-				<div class="form-row-last">
-					<input type="submit"  name="register" class="register" value="Register">
-					
-				</div>
-			 -->
-		<!-- </div> -->

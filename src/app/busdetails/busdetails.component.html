@@ -35,12 +35,13 @@
       <input type="checkbox" id="show-menu">
       <label for="show-menu" class="menu-icon"><i class="fas fa-bars"></i></label>
       <div class="content1">
-        <div class="logo"><a href="#">Bus Registration</a>
+        <div class="logo"><a href="#">Safar</a>
         </div>
       </div>
         <div style="text-align: right;" class = "content1">
           <ul class="links" >
-            <li><a routerLink = "/bushire">Bus Hire</a></li>
+            <li><a routerLink = "/bushire" *ngIf = "curruser != null">Bus Hire</a></li>
+			<li><a routerLink = "/login" *ngIf = "curruser == null">Bus Hire</a></li>
 
             <li *ngIf = "curruser != null">
               <a  class="desktop-link1">Manage Bookings</a>
@@ -58,9 +59,10 @@
 			  </li>
 			  <li><a [routerLink] = "['/userprofile/',curruser?.userId]" *ngIf = "curruser != null">{{curruser?.fullName}}</a></li>
             <li>
-              <a  class="desktop-link1">Login/Signup</a>
-              <input type="checkbox" id="show-features1">
-              <label for="show-features1">Login/Signup</label>
+              <a  class="desktop-link1" *ngIf = "curruser == null">Login/Signup</a>
+			  <a class = "login" routerLink="homepage" *ngIf = "curruser != null" (click) = "logout()">Logout</a>
+              <input type="checkbox" id="show-features1" *ngIf = "curruser == null">
+              <label for="show-features1" *ngIf = "curruser == null">Login/Signup</label>
               <ul>
                 <li><a class = "registration" routerLink="/registration" *ngIf = "curruser == null">SignUp</a></li>
                 <li><a class = "login" routerLink="/login" *ngIf = "curruser == null">Login</a></li>
@@ -78,15 +80,14 @@
 
 
 
-<section class="content" style = "margin-top: 200px;">
-<div class="row">
-<div class="col-xs-12">
-</div>
+<section class="content" style = " min-height: 100vh;margin-top: 100px; background-image: url(../../assets/images/busbackground2.jpeg);background-size: 1000px;background-repeat: no-repeat;background-size: 100%;">
+<div class="row" style="margin-top: 100px;">
+
 <div class="col-xs-12">
 
 <div class="box">
 <div class="box-header">
-<h3 class="box-title">Bus Details</h3>
+  <h3 class="box-title">Bus Details</h3>
 </div>
 
 <div class="box-body">
@@ -98,9 +99,9 @@
 <th>Bus Type</th>
 <th>Maximum Seats</th>
 <th>Start Point</th>
-<th>Start Time</th>
+<th>Departure Time</th>
 <th>End Point</th>
-<th>End Time</th>
+<th>Arrival Time</th>
 <th>Fare per Seat</th>
 </tr>
 </thead>

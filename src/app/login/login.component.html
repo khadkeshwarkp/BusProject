@@ -1,60 +1,64 @@
+
 <head>
-	<meta charset="utf-8">
-	<title>Login</title>
-	
-	
-
-	
+	<title>Login V1</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">	
 </head>
-
-
-    
-
-    <div class="box1">
-    <form [formGroup]= "ReactiveLogin">
-
 	
-			
-				<div>
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100" style="height: 700px;">
+				<div class="login100-pic js-tilt" data-tilt>
+					<img src="../../assets/images/image.jpg" alt="IMG">
+				</div>
 
-                    <p>
-                        <label for= "email">Email ID</label><br>
-                        <input type="text" id="email"name="email" formControlName="email"/>
-                
-                    </p>
-                    <div *ngIf="!email?.valid">
-                        <div *ngIf="email?.errors?.required">
-                             Email is mandatory
-                        </div>
-                        <div *ngIf="email?.errors?.pattern">
-                            Email ID should have @
-                        </div>
-                       
-                    </div>
+                <div class="box1">
+                    <form [formGroup]= "ReactiveLogin">            
+                            
+                    <div>
+							
+					<span class="login100-form-title">
+						Login
+				   </span>
+				<div class="wrap-input100 validate-input">
 
-                
-					<p>
-                        <label for= "password">Password</label><br>
-                        <input type="password" id="pasword" name="password" formControlName="pwd"/>
-                    </p>
-                    <div *ngIf="pwd?.errors?.required">
-                        Password is mandatory.
-                    </div>
-                    <div *ngIf="pwd?.errors?.pattern">
-                        Password should contain atleast one number and one letter.
-                    </div>
-			
-
+					<!-- <label for= "email">Email ID</label><br> -->
+					<input class="input100" type="text" id="email"name="email" formControlName="email" placeholder="Email ID" style = "width: 400px;"/>
+						<div *ngIf="!email?.valid">
+						<div *ngIf="email?.errors?.required && (email?.dirty ||email?.touched)">
+							 Email is mandatory
+						</div>
+					<div *ngIf="email?.errors?.pattern">
+							Email ID should have @
+					</div>
+				</div>
+				</div>
+						
+				<div class="wrap-input100 validate-input">
+							
+							
+							<input class = "input100" type="password" id="pasword" name="password" formControlName="pwd" placeholder="Password"/>
+							
+										<div *ngIf="pwd?.errors?.required && (pwd?.dirty ||pwd?.touched)">
+											Password is mandatory.
+										</div>
+										<div *ngIf="pwd?.errors?.pattern">
+											Password should contain atleast one number and one letter.
+										</div>
+				</div>
+                                    
+							
+		
+				<div class="container-login100-form-btn">
+                <p>
+                 <button type="button" class ="login100-form-btn"[disabled]="!ReactiveLogin.valid" (click) = "Check()" >Submit</button>
+                              </p>
+					</div>
 					
-                    
-                    <p>
-                    <button type="button" [disabled]="!ReactiveLogin.valid" (click) = "Check()" >Submit</button>
-                      </p>
-                      
 
-
-                </div>
-
-               </form> 
-	</div>
-			  
+					<div class="text-center p-t-136" >
+						<a class="txt2" routerLink = "/registration" >
+							Sign Up
+							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+						</a>
+					</div>

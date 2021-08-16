@@ -62,7 +62,7 @@ subscription?:Subscription;
    })
     let id = document.getElementById(e);
 
-      if((this.fillupSeat.indexOf(String(e))<0 ) && (this.showSeatList.length!=4)) {
+      if((this.fillupSeat.indexOf(String(e))<0 ) ) {
         
         id!.innerHTML = `   <img src="../assets/img/fseat.png" alt="">`
         
@@ -71,7 +71,7 @@ subscription?:Subscription;
           seatNo:this.seatid1,
           bookingId:this.id2,
           busId:this.data.busId,
-          seatId:e
+          seatid:e
         }
         this.seatid1 = this.seatid1 + 1;
         this.totalFare(this.data.fareAmount);

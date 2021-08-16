@@ -22,6 +22,7 @@ export class HomepageComponent implements OnInit {
 
   ngOnInit(): void {
     this.curruser = JSON.parse(localStorage.getItem("userlogin")!)
+    
   }
   logout(){
     localStorage.removeItem("userlogin");
@@ -29,7 +30,8 @@ export class HomepageComponent implements OnInit {
     this.router.navigate(['/homepage'])
   }
   submitDetails(){
-    
+    localStorage.setItem("from",JSON.stringify(this.ScheduleForm.get('source')!.value as string));
+    localStorage.setItem("to", JSON.stringify(this.ScheduleForm.get('destination')!.value as string));
     this.service.Getschedules(this.ScheduleForm.get('source')!.value,this.ScheduleForm.get('destination')!.value,this.ScheduleForm.get('viewdate')!.value).subscribe((schedules:Schedule[]) =>{
       console.log(schedules)
       this.router.navigate(['./busdetails'],{ queryParams:{data:JSON.stringify(schedules)}})

@@ -3,6 +3,7 @@ import{HttpClient,HttpErrorResponse,HttpHeaders} from '@angular/common/http'
 import {  Observable, throwError } from 'rxjs';
 import { Bus } from '../models/bus';
 import { Seat } from '../models/seat';
+import { Routes } from '../models/routes';
 
 @Injectable({
   providedIn: 'root'
@@ -46,11 +47,12 @@ export class ApiCallService {
   }
 
   delete(id:any){
-    this.httpClient.delete<Bus>(this.ApiUrl + '/buses/' + id, this.httpOptions).subscribe();
-    
-     
+    this.httpClient.delete<Bus>(this.ApiUrl + '/buses/' + id, this.httpOptions).subscribe(); 
   }
 
+  getroutebyscheduleid(id:any): Observable<Routes> {
+    return this.httpClient.get<Routes>(this.ApiUrl + '/routes/getroutebyscheduleid?id=' + id);
+  }
 }
 
 

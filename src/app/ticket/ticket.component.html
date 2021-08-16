@@ -9,12 +9,13 @@ z-index:100;">
       <input type="checkbox" id="show-menu">
       <label for="show-menu" class="menu-icon"><i class="fas fa-bars"></i></label>
       <div class="content1">
-        <div class="logo"><a href="#">Bus Registration</a>
+        <div class="logo"><a href="#">Safar</a>
         </div>
       </div>
         <div style="text-align: right;" class = "content1">
           <ul class="links" >
-            <li><a routerLink = "/bushire">Bus Hire</a></li>
+            <li><a routerLink = "/bushire" *ngIf = "curruser != null">Bus Hire</a></li>
+			<li><a routerLink = "/login" *ngIf = "curruser == null">Bus Hire</a></li>
 
             <li *ngIf = "curruser != null">
               <a  class="desktop-link1">Manage Bookings</a>
@@ -32,9 +33,10 @@ z-index:100;">
 			  </li>
 			  <li><a [routerLink] = "['/userprofile/',curruser?.userId]" *ngIf = "curruser != null">{{curruser?.fullName}}</a></li>
             <li>
-              <a  class="desktop-link1">Login/Signup</a>
-              <input type="checkbox" id="show-features1">
-              <label for="show-features1">Login/Signup</label>
+              <a  class="desktop-link" *ngIf = "curruser == null">Login/Signup</a>
+			  <a class = "login" routerLink="homepage" *ngIf = "curruser != null" (click) = "logout()">Logout</a>
+              <input type="checkbox" id="show-features" *ngIf = "curruser == null">
+              <label for="show-features" *ngIf = "curruser == null">Login/Signup</label>
               <ul>
                 <li><a class = "registration" routerLink="/registration" *ngIf = "curruser == null">SignUp</a></li>
                 <li><a class = "login" routerLink="/login" *ngIf = "curruser == null">Login</a></li>
@@ -48,22 +50,27 @@ z-index:100;">
     
   </div>
   <div style="margin-top:100px ; text-align: center;" *ngIf = "curruser == null">
-    <h1>Thanks! You ticket has been successfully created.</h1>
+    <h1>Thanks! Your ticket has been successfully booked.</h1>
+    <h1>Booking Id: {{bookings!.bookingId}}</h1>
     <h1>Name: {{bookings!.customerName}}</h1>
-    <h1>Contact No: {{bookings!.customerContact}}</h1>
-    <h1>Email: {{bookings!.customerEmail}}</h1>
     <h1>Total Fare: {{bookings!.totalAmount}}</h1>
-    <h1>Total Seats: {{bookings!.numberOfSeats}}</h1>
+    <h1>Source: {{from}}</h1>
+    <h1>Destination: {{to}}</h1>
+    <h1>Seats: <p *ngFor = "let seat of seats" style="display:inline;color:coral"> {{seat.seatid}}  
+    </p></h1>
   </div>
   <div style="margin-top:100px ; text-align: center;" *ngIf = "curruser != null">
-    <h1>Thanks! You ticket has been successfully created.</h1>
+    <h1>Thanks! Your ticket has been successfully booked.</h1>
+    <h1>Booking Id: {{bookings!.bookingId}}</h1>
     <h1>Name: {{curruser!.fullName}}</h1>
-    <h1>Contact No: {{curruser!.contactNo}}</h1>
-    <h1>Email: {{curruser!.emailAddress}}</h1>
     <h1>Total Fare: {{bookings!.totalAmount}}</h1>
-    <h1>Total Seats: {{bookings!.numberOfSeats}}</h1>
+    <h1>Source: {{from}}</h1>
+    <h1>Destination: {{to}}</h1>
+    <h1>Seats: <p *ngFor = "let seat of seats" style="display:inline;color:coral"> {{seat.seatid}}  
+    </p></h1>
+    
   </div>
-  <div class="feedback" style = "margin-left: 400px;">
+  <div class="feedback" style = "margin-left: 350px;">
     <p>Dear Customer,<br>
         <br>
     Thank you for using our Website. We would like to know how we performed. Please spare some moments to give us your valuable feedback as it will help us in improving our service.</p>

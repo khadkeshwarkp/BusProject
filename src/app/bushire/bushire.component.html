@@ -11,7 +11,7 @@
 position:fixed;
 top:0;
 width:100%;
-z-index:100;">
+z-index:100;" >
 <style>
   @import "../../assets/css/style.css";
 @import "../../assets/css/opensans-font.css";
@@ -306,12 +306,13 @@ p{
       <input type="checkbox" id="show-menu">
       <label for="show-menu" class="menu-icon"><i class="fas fa-bars"></i></label>
       <div class="content1">
-        <div class="logo"><a href="#">Bus Registration</a>
+        <div class="logo"><a href="#">Safar</a>
         </div>
       </div>
         <div style="text-align: right;" class = "content1">
           <ul class="links" >
-            <li><a routerLink = "/bushire">Bus Hire</a></li>
+            <li><a routerLink = "/bushire" *ngIf = "curruser != null">Bus Hire</a></li>
+			<li><a routerLink = "/login" *ngIf = "curruser == null">Bus Hire</a></li>
 
             <li *ngIf = "curruser != null">
               <a  class="desktop-link1">Manage Bookings</a>
@@ -329,9 +330,10 @@ p{
 			  </li>
 			  <li><a [routerLink] = "['/userprofile/',curruser?.userId]" *ngIf = "curruser != null">{{curruser?.fullName}}</a></li>
             <li>
-              <a  class="desktop-link1">Login/Signup</a>
-              <input type="checkbox" id="show-features1">
-              <label for="show-features1">Login/Signup</label>
+              <a  class="desktop-link" *ngIf = "curruser == null">Login/Signup</a>
+			  <a class = "login" routerLink="homepage" *ngIf = "curruser != null" (click) = "logout()">Logout</a>
+              <input type="checkbox" id="show-features" *ngIf = "curruser == null">
+              <label for="show-features" *ngIf = "curruser == null">Login/Signup</label>
               <ul>
                 <li><a class = "registration" routerLink="/registration" *ngIf = "curruser == null">SignUp</a></li>
                 <li><a class = "login" routerLink="/login" *ngIf = "curruser == null">Login</a></li>
@@ -343,10 +345,10 @@ p{
         </div>
 	</nav>
   </div>
-  
+<div style = "background-image: url(../../assets/images/busbackground2.jpeg);background-size: 100%;">
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-<div class="container" style="margin-top: 100px;">
-<div class="row flex-lg-nowrap">
+<div class="container"  style="background-color:rgb(255, 197, 187);">
+<div class="row flex-lg-nowrap" >
 
  <form [formGroup]= "ReactiveLogin" (ngSubmit)="Check()">
  
@@ -391,8 +393,7 @@ p{
                             
                              
                               <p>
-                                <label for= "pickup">Enter pickup point</label><br>
-                                <input type="pickup" id="pickup"name="pickup" formControlName="pickup"/>
+                                <input type="pickup" id="pickup"name="pickup" placeholder = "Enter pickup point"style="width: 100%;" formControlName="pickup"/>
                                 <br>
                                 
                             </p>
@@ -419,8 +420,8 @@ p{
                             <div class="col">
                               
                                 <p>
-                        <label for= "hiredays">No. of days for hire</label><br>
-                        <input type="Number" id="hiredays"name="hiredays" formControlName="hiredays" [(ngModel)] = "val1"/>
+                                  <br>
+                        <input type="Number" id="hiredays" name="hiredays" placeholder = "No. of days"style="width: 100%;" formControlName="hiredays" [(ngModel)] = "val1"/>
                         <br>
                     </p>
                               
@@ -432,21 +433,21 @@ p{
                           <div class="col">
                            
                                 <p>
-                                    <label for="start">Enter starting date</label>
                                     <br>
-                                   <input type="date" id="start" name="start" placeholder="DD-MM-YYYY" formControlName="start"/>
+                                   <input type="date" id="start" name="start" placeholder = "Enter Date"style="width: 100%;" placeholder="DD-MM-YYYY" formControlName="start"/>
                                  </p>
                             
                           </div>
                         </div>
                         
-
                         
+                     
                         
-                    
+                        <br>
                     <div class="row">
                       <div class="col d-flex justify-content-end">
                         <br>
+                        
                         <button class="btn btn-primary" type="submit" [disabled]="!ReactiveLogin.valid" (click) = "submit()">Proceed to Payment</button>
                       </div>
                     </div>
@@ -464,4 +465,4 @@ p{
 <script type="text/javascript">
 
 </script>
-	
+</div>

@@ -24,12 +24,15 @@ export class BushireComponent implements OnInit {
          
     },)
   
-  val1 :any;
+  val1 :number = 0;
+  check :string =""
     changelist(e:any) {
+      
       console.log(e.value)
       this.bustype?.setValue(e.target.value, {
         onlySelf: true
       })
+      
     }
   
     ngOnInit(): void {
@@ -61,13 +64,15 @@ export class BushireComponent implements OnInit {
       return this.ReactiveLogin.get('bustype');
     }
     checktype(){
-      let check = this.ReactiveLogin.get('bustype') as unknown as string ;
+      this.check = this.ReactiveLogin.value.bustype
+      this.val1 = this.ReactiveLogin.value.hiredays
+      console.log(this.check)
       
-      if( check ==  "AC-₹1500/day"){
+      if( this.check ==  "1: AC-₹1500/day"){
         return 1500 * this.val1;
-      }else if(check ==  "Non-AC-₹950/day"){
+      }else if(this.check ==  "2: Non-AC-₹950/day"){
         return 950* this.val1;
-      }else if(check == "Sleeper-₹700/day"){
+      }else if(this.check == "3: Sleeper-₹700/day"){
         return 700 * this.val1;
       }else{
         return 500 * this.val1;
